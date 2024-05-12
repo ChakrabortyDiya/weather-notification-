@@ -10,3 +10,4 @@ htmldata=getdata("https://weather.com/en-IN/weather/today/l/c2c95ea60f4ef581b88c
 soup = BeautifulSoup(htmldata, 'html.parser')
 current_temp = soup.find_all("span", class_= "_-_-components-src-organism-CurrentConditions-CurrentConditions--tempValue--MHmYY") 
 chances_rain = soup.find_all("div", class_= "_-_-components-src-organism-CurrentConditions-CurrentConditions--precipValue--2aJSf") 
+temp = (str(current_temp)) 
