@@ -13,3 +13,4 @@ chances_rain = soup.find_all("div", class_= "_-_-components-src-organism-Current
 temp = (str(current_temp)) 
 temp_rain = str(chances_rain) 
 result = "current_temp " + temp[128:-9] + "  in Kolkata West Bengal" + "\n" + temp_rain[131:-14] 
+n.show_toast("live Weather update", result, duration = 10) 
