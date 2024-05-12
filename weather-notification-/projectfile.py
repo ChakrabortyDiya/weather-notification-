@@ -2,15 +2,23 @@ import requests
 from bs4 import BeautifulSoup
 from win10toast import ToastNotifier
 
+#creating object
 n=ToastNotifier()
+
 def getdata(url):
      r = requests.get(url)  
      return r.text 
-htmldata=getdata("https://weather.com/en-IN/weather/today/l/c2c95ea60f4ef581b88c5c173d2ef178276d8fc26e6b39ad66f2e2e01f933c37")
+
+htmldata=getdata("https://weather.com/en-IN/weather/today/l/2f30240cc3e91903cecd01d370a0637719b8dcfbafa22e8fb6ba10254d290812")
 soup = BeautifulSoup(htmldata, 'html.parser')
+
 current_temp = soup.find_all("span", class_= "_-_-components-src-organism-CurrentConditions-CurrentConditions--tempValue--MHmYY") 
+
 chances_rain = soup.find_all("div", class_= "_-_-components-src-organism-CurrentConditions-CurrentConditions--precipValue--2aJSf") 
+
 temp = (str(current_temp)) 
 temp_rain = str(chances_rain) 
-result = "current_temp " + temp[128:-9] + "  in Kolkata West Bengal" + "\n" + temp_rain[131:-14] 
-n.show_toast("live Weather update", result, duration = 10) 
+
+result = "current_temp " + temp[128:-9] + "  in Kolkata West Bengal" + "\n" + temp_rain[131:-14]
+
+n.show_toast("live Weather update", result, duration = 60) 
